@@ -1,6 +1,6 @@
 import camelot as cm
 import sys
-
+import seaborn as sns
 from camelot.core import TableList
 
 
@@ -64,12 +64,24 @@ def save_excel(df):
     print("Saved " + excel_filename)
 
 
+def visualize_plot(df):
+    """
+    Gets the Dataframe as an argument
+    Plots the bar graph
+    """
+    print("Melting the Dataframe")
+    df_melted = df.melt('KPI', var_name='year', value_name='percentage')
+    print("Plotting the graph")
+    bar_graph = sns.barplot(x='KPI', y='percentage',hue='year', data=df_melted)
+    print(bar_graph)
+
 def main():
     pdf_location = get_pdf_location()
     input_pdf = get_pdf(pdf_location)
     df = get_dataframe(input_pdf)
     save_csv(df)
     save_excel(df)
+    visualize_plot(df)
 
 
 if __name__ == "__main__":
