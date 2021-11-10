@@ -9,10 +9,11 @@ def get_pdf_location():
     Gets the pdf path/url from the System Argument
     Returns the path/url
     """
-    if len(sys.argv) < 1 :
-        sys.exit("Type the pdf path or URL")
-    else :
+    if len(sys.argv) >= 1:
         return sys.argv[1]
+    else:
+        sys.exit("Type the pdf path or URL")
+
 
 def get_pdf(pdf_location):
     """
@@ -49,7 +50,7 @@ def save_csv(df):
     print("Saving to CSV File")
     csv_filename = "packt_output.csv"
     df.to_csv(csv_filename)
-    print("Saved "+csv_filename)
+    print("Saved " + csv_filename)
 
 
 def save_excel(df):
@@ -60,7 +61,7 @@ def save_excel(df):
     print("Saving to Excel File")
     excel_filename = "packt_output_excel.xlsx"
     df.to_excel(excel_filename)
-    print("Saved "+excel_filename)
+    print("Saved " + excel_filename)
 
 
 def main():
